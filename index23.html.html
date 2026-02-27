@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homestay Indah</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+}
+
+/* LOGIN PAGE */
+#loginPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.login-box input,
+.login-box select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #4facfe;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.login-box button:hover {
+    background: #00c6ff;
+}
+
+/* MAIN PAGE */
+#mainPage {
+    display: none;
+}
+
+header {
+    background: #4facfe;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.price {
+    color: #4facfe;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+    <div class="login-box">
+        <h2>Login Homestay</h2>
+        <input type="text" placeholder="Username" id="username">
+        <input type="password" placeholder="Password" id="password">
+        <button onclick="login()">Masuk</button>
+    </div>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="mainPage">
+
+<header>
+    <h1>Steven Homestay</h1>
+    <p>Penginapan Nyaman & Terjangkau untuk Liburan Anda</p>
+</header>
+
+<section class="section">
+    <h2>Profil Homestay</h2>
+    <p>
+        Homestay Indah menawarkan kenyamanan seperti di rumah sendiri. 
+        Terletak di lokasi strategis dengan suasana tenang dan fasilitas lengkap.
+        Cocok untuk keluarga, pasangan, maupun solo traveler.
+    </p>
+</section>
+
+<section class="section">
+    <h2>Pilihan Kamar</h2>
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+            <div class="card-content">
+                <h3>Kamar Standard</h3>
+                <p>Kamar nyaman dengan AC, TV, dan kamar mandi dalam.</p>
+                <div class="price">Rp 250.000 / malam</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a">
+            <div class="card-content">
+                <h3>Kamar Deluxe</h3>
+                <p>Kamar luas dengan balkon dan pemandangan indah.</p>
+                <div class="price">Rp 400.000 / malam</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+            <div class="card-content">
+                <h3>Family Room</h3>
+                <p>Ideal untuk keluarga dengan ruang santai.</p>
+                <div class="price">Rp 600.000 / malam</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FORM PEMESANAN -->
+<section class="section">
+    <h2>Form Pemesanan</h2>
+    <div class="login-box" style="margin:auto;">
+        <input type="text" id="nama" placeholder="Nama Pemesan">
+
+        <select id="kamar">
+            <option value="">Pilih Kamar</option>
+            <option value="250000">Kamar Standard - Rp 250.000</option>
+            <option value="400000">Kamar Deluxe - Rp 400.000</option>
+            <option value="600000">Family Room - Rp 600.000</option>
+        </select>
+
+        <input type="date" id="checkin">
+        <input type="date" id="checkout">
+
+        <button onclick="pesan()">Pesan Sekarang</button>
+    </div>
+</section>
+
+<footer>
+    © 2026 Steven Homestay | Hubungi kami: 0812-3456-7890
+</footer>
+
+</div>
+
+<script>
+function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "12345") {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("mainPage").style.display = "block";
+    } else {
+        alert("Username atau password salah!\nGunakan admin / 12345");
+    }
+}
+
+function pesan() {
+    var nama = document.getElementById("nama").value;
+    var kamar = document.getElementById("kamar");
+    var harga = kamar.value;
+    var checkin = document.getElementById("checkin").value;
+    var checkout = document.getElementById("checkout").value;
+
+    if (nama === "" || harga === "" || checkin === "" || checkout === "") {
+        alert("Lengkapi semua data pemesanan!");
+        return;
+    }
+
+    var tgl1 = new Date(checkin);
+    var tgl2 = new Date(checkout);
+    var lama = (tgl2 - tgl1) / (1000 * 60 * 60 * 24);
+
+    if (lama <= 0) {
+        alert("Tanggal checkout harus setelah check-in!");
+        return;
+    }
+
+    var total = lama * harga;
+
+    alert(
+        "PEMESANAN BERHASIL\n\n" +
+        "Nama: " + nama + "\n" +
+        "Kamar: " + kamar.options[kamar.selectedIndex].text + "\n" +
+        "Lama Menginap: " + lama + " malam\n" +
+        "Total Bayar: Rp " + total.toLocaleString()
+    );
+}
+</script>
+
+</body>
+</html>
